@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
