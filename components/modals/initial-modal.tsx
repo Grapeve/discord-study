@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import FileUpload from "../file-upload";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -45,7 +46,7 @@ const InitialModal = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      imageUrl: "",
+      imageUrl: "https://utfs.io/f/69ce9245-179d-4ff9-9869-c9fd1864ceab-1e.png",
     },
   });
 
@@ -76,12 +77,27 @@ const InitialModal = () => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <div className="space-y-8 px-6">
                 <div className="flex items-center justify-center text-center">
-                  TODO: Image Upload
+                  <FormField
+                    control={form.control}
+                    name="imageUrl"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <FileUpload
+                            endpoint="serverImage"
+                            value={field.value}
+                            onChange={field.onChange}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-red-500"></FormMessage>
+                      </FormItem>
+                    )}
+                  ></FormField>
                 </div>
                 <FormField
                   control={form.control}
                   name="name"
-                  render={(field) => (
+                  render={({ field }) => (
                     <FormItem>
                       <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                         Server name
@@ -91,7 +107,8 @@ const InitialModal = () => {
                           disabled={isLoading}
                           className=" bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                           placeholder="Enter server name"
-                          // {...field}
+                          {...field}
+                          onChange={field.onChange}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500"></FormMessage>
