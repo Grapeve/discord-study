@@ -11,9 +11,15 @@ interface FileUploadProps {
   onChange: (url?: string) => void;
   value: string;
   endpoint: "messageFile" | "serverImage";
+  onUploadfail?: (error: Error) => void;
 }
 
-const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
+const FileUpload = ({
+  onChange,
+  value,
+  endpoint,
+  onUploadfail,
+}: FileUploadProps) => {
   const flileType = value?.split(".").pop();
 
   if (value && flileType !== "pdf") {
@@ -49,7 +55,8 @@ const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
         onChange(res?.[0].url);
       }}
       onUploadError={(error: Error) => {
-        console.log(error);
+        onUploadfail!(error);
+        // console.log(error);
       }}
     ></UploadDropzone>
   );
