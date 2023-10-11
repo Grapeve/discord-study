@@ -3,10 +3,11 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { cn } from "@/lib/utils";
+import StyledComponentsRegistry from "../lib/AntdRegistry"; // antd
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import ModalProvider from "@/components/providers/modal-provider";
-import { cn } from "@/lib/utils";
-import StyledComponentsRegistry from "../lib/AntdRegistry";
+import { SocketProvider } from "@/components/providers/socket-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -33,9 +34,11 @@ export default function RootLayout({
             enableSystem={false}
             storageKey="discord-theme"
           >
-            <ModalProvider />
-            {/* <StyledComponentsRegistry>{children}</StyledComponentsRegistry> */}
-            {children}
+            <SocketProvider>
+              <ModalProvider />
+              {/* <StyledComponentsRegistry>{children}</StyledComponentsRegistry> */}
+              {children}
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>
