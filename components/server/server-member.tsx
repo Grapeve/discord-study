@@ -48,6 +48,7 @@ const ServerMember = ({ member, server }: ServerMemberProp) => {
       >
         {member.profile.name}
       </p>
+      {icon}
     </button>
   );
 };
