@@ -26,6 +26,9 @@ const ServerMember = ({ member, server }: ServerMemberProp) => {
 
   const icon = roleIconMap[member.role];
 
+  /**
+   * @param member.id 交谈对方的 Id
+   */
   const onClick = () => {
     router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
   };
