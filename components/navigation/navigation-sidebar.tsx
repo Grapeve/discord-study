@@ -26,7 +26,7 @@ const NavigationSidebar = async () => {
       },
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
 
