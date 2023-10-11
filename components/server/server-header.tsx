@@ -38,7 +38,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         <button
           className="w-full text-base font-semibold px-3 flex items-center h-12 
           border-neutral-200 dark:border-neutral-800 hover:bg-zinc-700/10
-          border-b-2 dark:hover:bg-zinc-700/50 transition"
+          border-b-2 dark:hover:bg-zinc-700/50 transition border-solid"
         >
           {server.name}
           <ChevronDown className="h-5 w-5 ml-auto" />
