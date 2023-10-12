@@ -8,6 +8,7 @@ import StyledComponentsRegistry from "../lib/AntdRegistry"; // antd
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import ModalProvider from "@/components/providers/modal-provider";
 import { SocketProvider } from "@/components/providers/socket-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -36,8 +37,10 @@ export default function RootLayout({
           >
             <SocketProvider>
               <ModalProvider />
-              {/* <StyledComponentsRegistry>{children}</StyledComponentsRegistry> */}
-              {children}
+              <QueryProvider>
+                {/* <StyledComponentsRegistry>{children}</StyledComponentsRegistry> */}
+                {children}
+              </QueryProvider>
             </SocketProvider>
           </ThemeProvider>
         </body>
