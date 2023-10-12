@@ -17,8 +17,8 @@ export default async function handler(
 
   try {
     const profile = await currentProfilePages(req);
-    const { content, fileUrl } = req.body;
-    const { serverId, channelId } = req.query;
+    const { content, fileUrl } = req.body; // page 模式获取body中的数据
+    const { serverId, channelId } = req.query; // page 模式获取query参数
 
     if (!profile) {
       return res.status(401).json({ error: "Unauthorized" });
