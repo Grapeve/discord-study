@@ -17,6 +17,9 @@ export const useSocket = () => {
   return useContext(SocketContext);
 };
 
+/**
+ * @description  重用socket连接，避免不同组件之间创建多个连接实例。
+ */
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
