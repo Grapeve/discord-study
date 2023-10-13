@@ -105,7 +105,7 @@ const ChatItem = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const url = qs.stringifyUrl({
-        url: `${socketUrl}/${id}`, // "/api/socket/messages/[messageId]"
+        url: `${socketUrl}/${id}`, // "/api/socket/messages/[messageId]" | /api/socket/direct-messages/[directMessageId]"
         query: socketQuery,
       });
 
