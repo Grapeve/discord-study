@@ -6,6 +6,7 @@ import { Member, Message, Profile } from "@prisma/client";
 import { Loader2, ServerCrash } from "lucide-react";
 
 import { useChatQuery } from "@/hooks/use-chat-query";
+import { useChatSocket } from "@/hooks/use-chat-socket";
 
 import ChatWelcome from "./chat-welcome";
 import ChatItem from "./chat-item";
@@ -45,6 +46,8 @@ const ChatMessages = ({
   type, // 频道或会话类型, 这里是频道类型
 }: ChatMessagesProps) => {
   const queryKey = `chat:${chatId}`;
+  const addKey = `chat:${chatId}:messages`;
+  const updateKey = `chat:${chatId}:messages:update`;
 
   // *调用 useChatQuery hook 获取频道中的消息
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
@@ -54,8 +57,9 @@ const ChatMessages = ({
       paramKey,
       paramValue,
     });
-
   console.log(data);
+
+  useChatSocket({ addKey, updateKey, queryKey });
 
   if (status === "loading") {
     return (
