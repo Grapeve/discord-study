@@ -50,7 +50,7 @@ const ChatMessages = ({
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useChatQuery({
       queryKey,
-      apiUrl,
+      apiUrl, // "/api/messages"
       paramKey,
       paramValue,
     });

@@ -28,7 +28,7 @@ const DeleteMessageModal = () => {
       setIsLoading(true);
 
       const url = qs.stringifyUrl({
-        url: apiUrl as string,
+        url: apiUrl as string, // "/api/socket/messages/[messageId]"
         query: query,
       });
       await axios.delete(url);
