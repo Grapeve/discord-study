@@ -86,3 +86,22 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+/* 滚动条样式 */
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 7px;
+    /* height: 20px; */
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: rgba(113, 113, 122, 0.1);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(30, 31, 34);
+    border-radius: 100vh;
+    /* border: 2px solid #f6f7ed; */
+  }
+}
