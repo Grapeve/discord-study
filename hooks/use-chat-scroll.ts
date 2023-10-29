@@ -62,5 +62,5 @@ export const useChatScroll = ({
         });
       }, 100);
     }
-  }, [bottomRef, chatRef, hasInitialized]);
+  }, [bottomRef, chatRef, hasInitialized, count]);
 };
